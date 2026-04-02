@@ -25,10 +25,13 @@ const movieDB = {
 };
 
 const adv = document.querySelectorAll(".promo__adv img"),
-  genre = document.querySelector(".promo__genre");
+  genre = document.querySelector(".promo__genre"),
+  poster = document.querySelector(".promo__bg");
 
 adv.forEach((item) => {
   item.remove();
 });
 
 genre.textContent = "Драма";
+
+poster.style.backgroundImage = 'url("img/bg.jpg")';
