@@ -26,7 +26,8 @@ const movieDB = {
 
 const adv = document.querySelectorAll(".promo__adv img"),
   genre = document.querySelector(".promo__genre"),
-  poster = document.querySelector(".promo__bg");
+  poster = document.querySelector(".promo__bg"),
+  movieList = document.querySelector(".promo__interactive-list");
 
 adv.forEach((item) => {
   item.remove();
@@ -35,3 +36,13 @@ adv.forEach((item) => {
 genre.textContent = "Драма";
 
 poster.style.backgroundImage = 'url("img/bg.jpg")';
+
+movieList.innerHTML = "";
+
+movieDB.movies.sort();
+
+movieDB.movies.forEach((item, i) => {
+  movieList.innerHTML += `                        <li class="promo__interactive-item">${i + 1} ${item}
+                            <div class="delete"></div>
+                        </li>`;
+});
