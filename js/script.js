@@ -32,16 +32,22 @@ const adv = document.querySelectorAll(".promo__adv img"),
   poster = document.querySelector(".promo__bg"),
   movieList = document.querySelector(".promo__interactive-list"),
   addForm = document.querySelector("form.add"),
-  addInput = document.querySelector(".adding__input");
+  addInput = document.querySelector(".adding__input"),
+  addCheckbox = document.querySelector("[type='checkbox']");
 
 addForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   let newFilm = addInput.value;
+  const favorite = addCheckbox.checked;
 
   if (newFilm) {
     if (newFilm.length > 21) {
       newFilm = `${newFilm.substring(0, 22)}...`.trim();
+    }
+
+    if (favorite) {
+      console.log("Додаємо улюблений фільм!");
     }
 
     movieDB.movies.push(newFilm);
