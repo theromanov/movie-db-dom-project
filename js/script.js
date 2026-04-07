@@ -32,20 +32,38 @@ const adv = document.querySelectorAll(".promo__adv img"),
   poster = document.querySelector(".promo__bg"),
   movieList = document.querySelector(".promo__interactive-list");
 
-adv.forEach((item) => {
-  item.remove();
-});
+const advRemove = (advImg) => {
+  advImg.forEach((item) => {
+    item.remove();
+  });
+};
 
-genre.textContent = "Драма";
+const changeGenre = (genreText) => {
+  genreText.textContent = "Драма";
+};
 
-poster.style.backgroundImage = 'url("img/bg.jpg")';
+const changePosterBG = (posterImg) => {
+  posterImg.style.backgroundImage = 'url("img/bg.jpg")';
+};
 
-movieList.innerHTML = "";
+const sortMovieDB = (films) => {
+  films.sort();
+};
 
-movieDB.movies.sort();
+const createMovieList = (dataBase, movieList) => {
+  movieList.innerHTML = "";
 
-movieDB.movies.forEach((item, i) => {
-  movieList.innerHTML += `                        <li class="promo__interactive-item">${i + 1} ${item}
-                            <div class="delete"></div>
-                        </li>`;
-});
+  sortMovieDB(dataBase);
+
+  dataBase.forEach((item, i) => {
+    movieList.innerHTML += `                        
+  <li class="promo__interactive-item">${i + 1}) ${item}
+        <div class="delete"></div>
+  </li>`;
+  });
+};
+
+advRemove(adv);
+changeGenre(genre);
+changePosterBG(poster);
+createMovieList(movieDB.movies, movieList);
