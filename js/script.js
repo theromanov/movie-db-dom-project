@@ -37,9 +37,13 @@ const adv = document.querySelectorAll(".promo__adv img"),
 addForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const newFilm = addInput.value;
+  let newFilm = addInput.value;
 
   if (newFilm) {
+    if (newFilm.length > 21) {
+      newFilm = `${newFilm.substring(0, 22)}...`.trim();
+    }
+
     movieDB.movies.push(newFilm);
     createMovieList(movieDB.movies, movieList);
 
