@@ -46,8 +46,6 @@ addForm.addEventListener("submit", (event) => {
 
     movieDB.movies.push(newFilm);
     createMovieList(movieDB.movies, movieList);
-
-    console.log(movieDB.movies);
   }
 
   event.target.reset();
@@ -81,6 +79,16 @@ const createMovieList = (dataBase, movieList) => {
   <li class="promo__interactive-item">${i + 1}) ${item}
         <div class="delete"></div>
   </li>`;
+  });
+
+  const deleteBin = document.querySelectorAll(".delete");
+
+  deleteBin.forEach((item, i) => {
+    item.addEventListener("click", () => {
+      item.parentElement.remove();
+      dataBase.splice(i, 1);
+      createMovieList(dataBase, movieList);
+    });
   });
 };
 
