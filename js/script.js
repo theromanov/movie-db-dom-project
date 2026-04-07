@@ -30,7 +30,24 @@ const movieDB = {
 const adv = document.querySelectorAll(".promo__adv img"),
   genre = document.querySelector(".promo__genre"),
   poster = document.querySelector(".promo__bg"),
-  movieList = document.querySelector(".promo__interactive-list");
+  movieList = document.querySelector(".promo__interactive-list"),
+  addForm = document.querySelector("form.add"),
+  addInput = document.querySelector(".adding__input");
+
+addForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const newFilm = addInput.value;
+
+  if (newFilm) {
+    movieDB.movies.push(newFilm);
+    createMovieList(movieDB.movies, movieList);
+
+    console.log(movieDB.movies);
+  }
+
+  event.target.reset();
+});
 
 const advRemove = (advImg) => {
   advImg.forEach((item) => {
